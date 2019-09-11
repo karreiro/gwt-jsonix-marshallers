@@ -18,21 +18,26 @@ package gwt.jsonix.marshallers.xjc.plugin.builders;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.Optional;
 
 import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JAnnotationUse;
+import com.sun.codemodel.JBlock;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JCommentPart;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JDocComment;
+import com.sun.codemodel.JExpr;
+import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.writer.FileCodeWriter;
 import com.sun.codemodel.writer.FilterCodeWriter;
 import com.sun.tools.xjc.model.Model;
 import gwt.jsonix.marshallers.xjc.plugin.GWTSettings;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import org.hisrc.jsonix.settings.LogLevelSetting;
 import org.slf4j.Logger;
@@ -84,8 +89,40 @@ public class BuilderUtils {
         }
     }
 
-    public static JAnnotationUse addGetter(JCodeModel jCodeModel, JDefinedClass jDefinedClass, JClass propertyRef, String
-            publicPropertyName, String privatePropertyName) {
+    public static JAnnotationUse addDefaultGetter(final JCodeModel jCodeModel,
+                                                  final JDefinedClass jDefinedClass,
+                                                  final JDefinedClass jsUtilsClass,
+                                                  final JClass propertyRef,
+                                                  final String publicPropertyName,
+                                                  final String privatePropertyName,
+                                                  final JMethod nativeGetter) {
+
+        final String getterMethodName = "get" + publicPropertyName;
+        final int mod = JMod.PUBLIC + JMod.FINAL;
+
+        final JMethod getterMethod = jDefinedClass.method(mod, propertyRef, getterMethodName);
+        final JDocComment getterComment = getterMethod.javadoc();
+        final JCommentPart getterCommentReturnPart = getterComment.addReturn();
+        final JBlock body = getterMethod.body();
+
+        getterComment.append("Getter for <b>" + privatePropertyName + "</b>");
+        getterCommentReturnPart.add(" <b>" + privatePropertyName + "</<b>");
+
+        final JInvocation nativeGetterInvocation = JExpr.invoke(nativeGetter);
+        final JInvocation getUnwrappedElementsArrayInvocation = jsUtilsClass.staticInvoke("getUnwrappedElementsArray").arg(nativeGetterInvocation);
+        final JInvocation list = jsUtilsClass.staticInvoke("toList").arg(getUnwrappedElementsArrayInvocation);
+
+        body._return(list);
+
+        return getterMethod.annotate(jCodeModel.ref(JsOverlay.class));
+    }
+
+
+    public static JMethod addNativeGetter(final JCodeModel jCodeModel,
+                                          final JDefinedClass jDefinedClass,
+                                          final JClass propertyRef,
+                                          final String publicPropertyName,
+                                          final String privatePropertyName) {
         String getterMethodName = "get" + publicPropertyName;
         int mod = JMod.PUBLIC + JMod.FINAL + JMod.NATIVE;
         JMethod getterMethod = jDefinedClass.method(mod, propertyRef, getterMethodName);
@@ -95,7 +132,8 @@ public class BuilderUtils {
         JCommentPart getterCommentReturnPart = getterComment.addReturn();
         commentString = " <b>" + privatePropertyName + "</<b>";
         getterCommentReturnPart.add(commentString);
-        return getterMethod.annotate(jCodeModel.ref(JsProperty.class)).param("name", privatePropertyName);
+        getterMethod.annotate(jCodeModel.ref(JsProperty.class)).param("name", privatePropertyName);
+        return getterMethod;
     }
 
     public static JAnnotationUse addSetter(JCodeModel jCodeModel, JDefinedClass jDefinedClass, JClass propertyRef, String

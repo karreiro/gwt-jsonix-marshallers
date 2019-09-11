@@ -82,6 +82,14 @@ public class JsUtilsBuilder {
             "        }\n" +
             "    }-*/;\n";
 
+    private static final String NEW_INSTANCE_TEMPLATE = "\r\n    public static native <D> D newInstance(final Class<D> klass) /*-{\n" +
+            "        return {\"TYPE_NAME\": klass.TYPE}\n" +
+            "    }-*/;\n";
+
+    private static final String GET_TYPE_NAME = "\r\n    public static native String getTypeName(final Object instance) /*-{\n" +
+            "        return instance.TYPE_NAME\n" +
+            "    }-*/;\n";
+
     private JsUtilsBuilder() {
     }
 
@@ -102,6 +110,16 @@ public class JsUtilsBuilder {
         addJavaToAttributesMapMethod(jCodeModel, toPopulate);
         addNativeToAttributesMapMethod(toPopulate, jsMainPackage);
         addPutToAttributesMap(jCodeModel, toPopulate);
+        addNewInstance(toPopulate);
+        addGetTypeName(toPopulate);
+    }
+
+    protected static void addNewInstance(final JDefinedClass jDefinedClass) {
+        jDefinedClass.direct(NEW_INSTANCE_TEMPLATE);
+    }
+
+    protected static void addGetTypeName(final JDefinedClass jDefinedClass) {
+        jDefinedClass.direct(GET_TYPE_NAME);
     }
 
     protected static JDefinedClass getJsUtilsClass(JCodeModel jCodeModel, String jsMainPackage) throws JClassAlreadyExistsException {
@@ -261,7 +279,6 @@ public class JsUtilsBuilder {
         jsUtils.direct(String.format(TO_ATTRIBUTES_MAP_METHOD, jsMainPackage));
     }
 
-
     private static JMethod getGenerifiedJMethod(JDefinedClass jsUtils, Class<?> returnType, String methodName) {
         JMethod toReturn = getJMethod(jsUtils, returnType, methodName);
         toReturn.generify(GENERIC_TYPE_NAME);
@@ -315,7 +332,7 @@ public class JsUtilsBuilder {
         return jsArrayLikeClass.narrow(getGenericT(jCodeModel));
     }
 
-    private static JClass getQNameStringNarrowedMapClass(JCodeModel jCodeModel){
+    private static JClass getQNameStringNarrowedMapClass(JCodeModel jCodeModel) {
         JClass rawMapClass = jCodeModel.ref(Map.class);
         final JClass qName = jCodeModel.ref(QName.class);
         return rawMapClass.narrow(qName, jCodeModel.ref(String.class));
