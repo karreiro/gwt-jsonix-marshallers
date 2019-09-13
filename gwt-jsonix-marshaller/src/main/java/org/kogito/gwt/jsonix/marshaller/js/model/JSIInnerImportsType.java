@@ -1,6 +1,8 @@
 
 package org.kogito.gwt.jsonix.marshaller.js.model;
 
+import java.util.List;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -11,9 +13,30 @@ import jsinterop.base.JsArrayLike;
  * JSInterop adapter for <code>InnerImportsType</code>
  * 
  */
-@JsType(namespace = JsPackage.GLOBAL, name = "InnerImportsType")
+@JsType(namespace = JsPackage.GLOBAL, name = "InnerImportsType", isNative = true)
 public class JSIInnerImportsType {
 
+    @JsOverlay
+    public final static String TYPE = "SCESIM.InnerImportsType";
+
+    @JsOverlay
+    public static JSIInnerImportsType newJSIInnerImportsTypeInstance(final Class<JSIInnerImportsType> klass) {
+        return JsUtils.newInstance(klass);
+    }
+
+    @JsOverlay
+    public static Boolean instanceOfJSIInnerImportsType(final Object instance) {
+        return "SCESIM.InnerImportsType".equals(JsUtils.getTypeName(instance));
+    }
+
+    /**
+     * Getter for <b>TYPE_NAME</b>
+     * 
+     * @return
+     *      <b>TYPE_NAME</<b>
+     */
+    @JsProperty(name = "TYPE_NAME", namespace = "InnerImportsType")
+    public final native String getTYPE_NAME();
 
     /**
      * Getter for <b>_import</b>
@@ -21,24 +44,27 @@ public class JSIInnerImportsType {
      * @return
      *      <b>_import</<b>
      */
-    @JsProperty(name = "_import")
-    public final native JsArrayLike<JSIImportType> getImport();
+    @JsProperty(name = "_import", namespace = "InnerImportsType")
+    public final native JsArrayLike<JSIImportType> getNativeImport();
+
+    /**
+     * Getter for <b>_import</b>
+     * 
+     * @return
+     *      <b>_import</<b>
+     */
+    @JsOverlay
+    public final List<JSIImportType> getImport() {
+        return JsUtils.toList(JsUtils.getUnwrappedElementsArray(getNativeImport()));
+    }
 
     /**
      * Setter for <b>_import</b>
      * 
-     * @param _import
-     *      <b>_import</<b> to set.
+     * @param _importParam
+     *      <b>_import</b> to set.
      */
-    @JsProperty(name = "_import")
-    public final native void setImport(JsArrayLike<JSIImportType> _import);
-    
+    @JsProperty(name = "_import", namespace = "InnerImportsType")
+    public final native void setImport(JsArrayLike<JSIImportType> _importParam);
 
-
-
-public static native JSIInnerImportsType newInstance() /*-{
-        var json = "{\"TYPE_NAME\": \"SCESIM.InnerImportsType\"}";
-        var retrieved = JSON.parse(json)
-        return retrieved
-    }-*/;
 }

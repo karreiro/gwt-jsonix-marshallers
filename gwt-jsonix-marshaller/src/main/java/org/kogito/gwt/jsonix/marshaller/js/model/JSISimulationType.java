@@ -1,6 +1,7 @@
 
 package org.kogito.gwt.jsonix.marshaller.js.model;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -10,9 +11,30 @@ import jsinterop.annotations.JsType;
  * JSInterop adapter for <code>SimulationType</code>
  * 
  */
-@JsType(namespace = JsPackage.GLOBAL, name = "SimulationType")
+@JsType(namespace = JsPackage.GLOBAL, name = "SimulationType", isNative = true)
 public class JSISimulationType {
 
+    @JsOverlay
+    public final static String TYPE = "SCESIM.SimulationType";
+
+    @JsOverlay
+    public static JSISimulationType newJSISimulationTypeInstance(final Class<JSISimulationType> klass) {
+        return JsUtils.newInstance(klass);
+    }
+
+    @JsOverlay
+    public static Boolean instanceOfJSISimulationType(final Object instance) {
+        return "SCESIM.SimulationType".equals(JsUtils.getTypeName(instance));
+    }
+
+    /**
+     * Getter for <b>TYPE_NAME</b>
+     * 
+     * @return
+     *      <b>TYPE_NAME</<b>
+     */
+    @JsProperty(name = "TYPE_NAME", namespace = "SimulationType")
+    public final native String getTYPE_NAME();
 
     /**
      * Getter for <b>simulationDescriptor</b>
@@ -20,17 +42,17 @@ public class JSISimulationType {
      * @return
      *      <b>simulationDescriptor</<b>
      */
-    @JsProperty(name = "simulationDescriptor")
+    @JsProperty(name = "simulationDescriptor", namespace = "SimulationType")
     public final native JSISimulationDescriptorType getSimulationDescriptor();
 
     /**
      * Setter for <b>simulationDescriptor</b>
      * 
-     * @param simulationDescriptor
-     *      <b>simulationDescriptor</<b> to set.
+     * @param simulationDescriptorParam
+     *      <b>simulationDescriptor</b> to set.
      */
-    @JsProperty(name = "simulationDescriptor")
-    public final native void setSimulationDescriptor(JSISimulationDescriptorType simulationDescriptor);
+    @JsProperty(name = "simulationDescriptor", namespace = "SimulationType")
+    public final native void setSimulationDescriptor(JSISimulationDescriptorType simulationDescriptorParam);
 
     /**
      * Getter for <b>scenarios</b>
@@ -38,24 +60,16 @@ public class JSISimulationType {
      * @return
      *      <b>scenarios</<b>
      */
-    @JsProperty(name = "scenarios")
+    @JsProperty(name = "scenarios", namespace = "SimulationType")
     public final native JSIScenariosType getScenarios();
 
     /**
      * Setter for <b>scenarios</b>
      * 
-     * @param scenarios
-     *      <b>scenarios</<b> to set.
+     * @param scenariosParam
+     *      <b>scenarios</b> to set.
      */
-    @JsProperty(name = "scenarios")
-    public final native void setScenarios(JSIScenariosType scenarios);
-    
+    @JsProperty(name = "scenarios", namespace = "SimulationType")
+    public final native void setScenarios(JSIScenariosType scenariosParam);
 
-
-
-public static native JSISimulationType newInstance() /*-{
-        var json = "{\"TYPE_NAME\": \"SCESIM.SimulationType\"}";
-        var retrieved = JSON.parse(json)
-        return retrieved
-    }-*/;
 }

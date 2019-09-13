@@ -1,6 +1,7 @@
 
 package org.kogito.gwt.jsonix.marshaller.js.model;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -10,9 +11,30 @@ import jsinterop.annotations.JsType;
  * JSInterop adapter for <code>SimulationDescriptorType</code>
  * 
  */
-@JsType(namespace = JsPackage.GLOBAL, name = "SimulationDescriptorType")
+@JsType(namespace = JsPackage.GLOBAL, name = "SimulationDescriptorType", isNative = true)
 public class JSISimulationDescriptorType {
 
+    @JsOverlay
+    public final static String TYPE = "SCESIM.SimulationDescriptorType";
+
+    @JsOverlay
+    public static JSISimulationDescriptorType newJSISimulationDescriptorTypeInstance(final Class<JSISimulationDescriptorType> klass) {
+        return JsUtils.newInstance(klass);
+    }
+
+    @JsOverlay
+    public static Boolean instanceOfJSISimulationDescriptorType(final Object instance) {
+        return "SCESIM.SimulationDescriptorType".equals(JsUtils.getTypeName(instance));
+    }
+
+    /**
+     * Getter for <b>TYPE_NAME</b>
+     * 
+     * @return
+     *      <b>TYPE_NAME</<b>
+     */
+    @JsProperty(name = "TYPE_NAME", namespace = "SimulationDescriptorType")
+    public final native String getTYPE_NAME();
 
     /**
      * Getter for <b>factMappings</b>
@@ -20,17 +42,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>factMappings</<b>
      */
-    @JsProperty(name = "factMappings")
+    @JsProperty(name = "factMappings", namespace = "SimulationDescriptorType")
     public final native JSIFactMappingsType getFactMappings();
 
     /**
      * Setter for <b>factMappings</b>
      * 
-     * @param factMappings
-     *      <b>factMappings</<b> to set.
+     * @param factMappingsParam
+     *      <b>factMappings</b> to set.
      */
-    @JsProperty(name = "factMappings")
-    public final native void setFactMappings(JSIFactMappingsType factMappings);
+    @JsProperty(name = "factMappings", namespace = "SimulationDescriptorType")
+    public final native void setFactMappings(JSIFactMappingsType factMappingsParam);
 
     /**
      * Getter for <b>dmoSession</b>
@@ -38,17 +60,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>dmoSession</<b>
      */
-    @JsProperty(name = "dmoSession")
+    @JsProperty(name = "dmoSession", namespace = "SimulationDescriptorType")
     public final native String getDmoSession();
 
     /**
      * Setter for <b>dmoSession</b>
      * 
-     * @param dmoSession
-     *      <b>dmoSession</<b> to set.
+     * @param dmoSessionParam
+     *      <b>dmoSession</b> to set.
      */
-    @JsProperty(name = "dmoSession")
-    public final native void setDmoSession(String dmoSession);
+    @JsProperty(name = "dmoSession", namespace = "SimulationDescriptorType")
+    public final native void setDmoSession(String dmoSessionParam);
 
     /**
      * Getter for <b>type</b>
@@ -56,17 +78,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>type</<b>
      */
-    @JsProperty(name = "type")
+    @JsProperty(name = "type", namespace = "SimulationDescriptorType")
     public final native String getType();
 
     /**
      * Setter for <b>type</b>
      * 
-     * @param type
-     *      <b>type</<b> to set.
+     * @param typeParam
+     *      <b>type</b> to set.
      */
-    @JsProperty(name = "type")
-    public final native void setType(String type);
+    @JsProperty(name = "type", namespace = "SimulationDescriptorType")
+    public final native void setType(String typeParam);
 
     /**
      * Getter for <b>fileName</b>
@@ -74,17 +96,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>fileName</<b>
      */
-    @JsProperty(name = "fileName")
+    @JsProperty(name = "fileName", namespace = "SimulationDescriptorType")
     public final native String getFileName();
 
     /**
      * Setter for <b>fileName</b>
      * 
-     * @param fileName
-     *      <b>fileName</<b> to set.
+     * @param fileNameParam
+     *      <b>fileName</b> to set.
      */
-    @JsProperty(name = "fileName")
-    public final native void setFileName(String fileName);
+    @JsProperty(name = "fileName", namespace = "SimulationDescriptorType")
+    public final native void setFileName(String fileNameParam);
 
     /**
      * Getter for <b>kieSession</b>
@@ -92,17 +114,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>kieSession</<b>
      */
-    @JsProperty(name = "kieSession")
+    @JsProperty(name = "kieSession", namespace = "SimulationDescriptorType")
     public final native String getKieSession();
 
     /**
      * Setter for <b>kieSession</b>
      * 
-     * @param kieSession
-     *      <b>kieSession</<b> to set.
+     * @param kieSessionParam
+     *      <b>kieSession</b> to set.
      */
-    @JsProperty(name = "kieSession")
-    public final native void setKieSession(String kieSession);
+    @JsProperty(name = "kieSession", namespace = "SimulationDescriptorType")
+    public final native void setKieSession(String kieSessionParam);
 
     /**
      * Getter for <b>kieBase</b>
@@ -110,17 +132,17 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>kieBase</<b>
      */
-    @JsProperty(name = "kieBase")
+    @JsProperty(name = "kieBase", namespace = "SimulationDescriptorType")
     public final native String getKieBase();
 
     /**
      * Setter for <b>kieBase</b>
      * 
-     * @param kieBase
-     *      <b>kieBase</<b> to set.
+     * @param kieBaseParam
+     *      <b>kieBase</b> to set.
      */
-    @JsProperty(name = "kieBase")
-    public final native void setKieBase(String kieBase);
+    @JsProperty(name = "kieBase", namespace = "SimulationDescriptorType")
+    public final native void setKieBase(String kieBaseParam);
 
     /**
      * Getter for <b>ruleFlowGroup</b>
@@ -128,24 +150,16 @@ public class JSISimulationDescriptorType {
      * @return
      *      <b>ruleFlowGroup</<b>
      */
-    @JsProperty(name = "ruleFlowGroup")
+    @JsProperty(name = "ruleFlowGroup", namespace = "SimulationDescriptorType")
     public final native String getRuleFlowGroup();
 
     /**
      * Setter for <b>ruleFlowGroup</b>
      * 
-     * @param ruleFlowGroup
-     *      <b>ruleFlowGroup</<b> to set.
+     * @param ruleFlowGroupParam
+     *      <b>ruleFlowGroup</b> to set.
      */
-    @JsProperty(name = "ruleFlowGroup")
-    public final native void setRuleFlowGroup(String ruleFlowGroup);
-    
+    @JsProperty(name = "ruleFlowGroup", namespace = "SimulationDescriptorType")
+    public final native void setRuleFlowGroup(String ruleFlowGroupParam);
 
-
-
-public static native JSISimulationDescriptorType newInstance() /*-{
-        var json = "{\"TYPE_NAME\": \"SCESIM.SimulationDescriptorType\"}";
-        var retrieved = JSON.parse(json)
-        return retrieved
-    }-*/;
 }

@@ -1,6 +1,7 @@
 
 package org.kogito.gwt.jsonix.marshaller.js.model;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -10,9 +11,30 @@ import jsinterop.annotations.JsType;
  * JSInterop adapter for <code>FactMappingType</code>
  * 
  */
-@JsType(namespace = JsPackage.GLOBAL, name = "FactMappingType")
+@JsType(namespace = JsPackage.GLOBAL, name = "FactMappingType", isNative = true)
 public class JSIFactMappingType {
 
+    @JsOverlay
+    public final static String TYPE = "SCESIM.FactMappingType";
+
+    @JsOverlay
+    public static JSIFactMappingType newJSIFactMappingTypeInstance(final Class<JSIFactMappingType> klass) {
+        return JsUtils.newInstance(klass);
+    }
+
+    @JsOverlay
+    public static Boolean instanceOfJSIFactMappingType(final Object instance) {
+        return "SCESIM.FactMappingType".equals(JsUtils.getTypeName(instance));
+    }
+
+    /**
+     * Getter for <b>TYPE_NAME</b>
+     * 
+     * @return
+     *      <b>TYPE_NAME</<b>
+     */
+    @JsProperty(name = "TYPE_NAME", namespace = "FactMappingType")
+    public final native String getTYPE_NAME();
 
     /**
      * Getter for <b>expressionElements</b>
@@ -20,17 +42,17 @@ public class JSIFactMappingType {
      * @return
      *      <b>expressionElements</<b>
      */
-    @JsProperty(name = "expressionElements")
+    @JsProperty(name = "expressionElements", namespace = "FactMappingType")
     public final native JSIExpressionElementsType getExpressionElements();
 
     /**
      * Setter for <b>expressionElements</b>
      * 
-     * @param expressionElements
-     *      <b>expressionElements</<b> to set.
+     * @param expressionElementsParam
+     *      <b>expressionElements</b> to set.
      */
-    @JsProperty(name = "expressionElements")
-    public final native void setExpressionElements(JSIExpressionElementsType expressionElements);
+    @JsProperty(name = "expressionElements", namespace = "FactMappingType")
+    public final native void setExpressionElements(JSIExpressionElementsType expressionElementsParam);
 
     /**
      * Getter for <b>expressionIdentifier</b>
@@ -38,17 +60,17 @@ public class JSIFactMappingType {
      * @return
      *      <b>expressionIdentifier</<b>
      */
-    @JsProperty(name = "expressionIdentifier")
+    @JsProperty(name = "expressionIdentifier", namespace = "FactMappingType")
     public final native JSIExpressionIdentifierType getExpressionIdentifier();
 
     /**
      * Setter for <b>expressionIdentifier</b>
      * 
-     * @param expressionIdentifier
-     *      <b>expressionIdentifier</<b> to set.
+     * @param expressionIdentifierParam
+     *      <b>expressionIdentifier</b> to set.
      */
-    @JsProperty(name = "expressionIdentifier")
-    public final native void setExpressionIdentifier(JSIExpressionIdentifierType expressionIdentifier);
+    @JsProperty(name = "expressionIdentifier", namespace = "FactMappingType")
+    public final native void setExpressionIdentifier(JSIExpressionIdentifierType expressionIdentifierParam);
 
     /**
      * Getter for <b>factIdentifier</b>
@@ -56,17 +78,17 @@ public class JSIFactMappingType {
      * @return
      *      <b>factIdentifier</<b>
      */
-    @JsProperty(name = "factIdentifier")
+    @JsProperty(name = "factIdentifier", namespace = "FactMappingType")
     public final native JSIFactIdentifierType getFactIdentifier();
 
     /**
      * Setter for <b>factIdentifier</b>
      * 
-     * @param factIdentifier
-     *      <b>factIdentifier</<b> to set.
+     * @param factIdentifierParam
+     *      <b>factIdentifier</b> to set.
      */
-    @JsProperty(name = "factIdentifier")
-    public final native void setFactIdentifier(JSIFactIdentifierType factIdentifier);
+    @JsProperty(name = "factIdentifier", namespace = "FactMappingType")
+    public final native void setFactIdentifier(JSIFactIdentifierType factIdentifierParam);
 
     /**
      * Getter for <b>className</b>
@@ -74,17 +96,17 @@ public class JSIFactMappingType {
      * @return
      *      <b>className</<b>
      */
-    @JsProperty(name = "className")
+    @JsProperty(name = "className", namespace = "FactMappingType")
     public final native String getClassName();
 
     /**
      * Setter for <b>className</b>
      * 
-     * @param className
-     *      <b>className</<b> to set.
+     * @param classNameParam
+     *      <b>className</b> to set.
      */
-    @JsProperty(name = "className")
-    public final native void setClassName(String className);
+    @JsProperty(name = "className", namespace = "FactMappingType")
+    public final native void setClassName(String classNameParam);
 
     /**
      * Getter for <b>factAlias</b>
@@ -92,17 +114,17 @@ public class JSIFactMappingType {
      * @return
      *      <b>factAlias</<b>
      */
-    @JsProperty(name = "factAlias")
+    @JsProperty(name = "factAlias", namespace = "FactMappingType")
     public final native String getFactAlias();
 
     /**
      * Setter for <b>factAlias</b>
      * 
-     * @param factAlias
-     *      <b>factAlias</<b> to set.
+     * @param factAliasParam
+     *      <b>factAlias</b> to set.
      */
-    @JsProperty(name = "factAlias")
-    public final native void setFactAlias(String factAlias);
+    @JsProperty(name = "factAlias", namespace = "FactMappingType")
+    public final native void setFactAlias(String factAliasParam);
 
     /**
      * Getter for <b>expressionAlias</b>
@@ -110,24 +132,16 @@ public class JSIFactMappingType {
      * @return
      *      <b>expressionAlias</<b>
      */
-    @JsProperty(name = "expressionAlias")
+    @JsProperty(name = "expressionAlias", namespace = "FactMappingType")
     public final native String getExpressionAlias();
 
     /**
      * Setter for <b>expressionAlias</b>
      * 
-     * @param expressionAlias
-     *      <b>expressionAlias</<b> to set.
+     * @param expressionAliasParam
+     *      <b>expressionAlias</b> to set.
      */
-    @JsProperty(name = "expressionAlias")
-    public final native void setExpressionAlias(String expressionAlias);
-    
+    @JsProperty(name = "expressionAlias", namespace = "FactMappingType")
+    public final native void setExpressionAlias(String expressionAliasParam);
 
-
-
-public static native JSIFactMappingType newInstance() /*-{
-        var json = "{\"TYPE_NAME\": \"SCESIM.FactMappingType\"}";
-        var retrieved = JSON.parse(json)
-        return retrieved
-    }-*/;
 }
